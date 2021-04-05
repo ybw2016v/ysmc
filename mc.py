@@ -3,16 +3,26 @@
 import time
 import subprocess
 import sys
+import json
 
 dfile=sys.argv[1]
+
+divdog={}
+with open('default.json') as cdog:
+    jsondog=cdog.read()
+    divdog=json.loads(jsondog)
+X0=divdog['x0']
+Y0=divdog['y0']
+dX=divdog['dx']
+dY=divdog['dy']
 
 def tapdog(N):
     """
     按键
     """
     y,x=divmod(N,7)
-    tx=x*210 + 540
-    ty=960 - 180*y 
+    tx=x*dX + X0
+    ty=Y0 + dY*y 
     subprocess.Popen('adb shell input tap {} {}'.format(tx,ty), shell=True)
     print([tx,ty])
     pass
@@ -63,12 +73,12 @@ for cj in lli:
                 jj=int(iiu[1])+13
                 # llo.append([[jj],dT])
                 llo.append(jj)
-            elif cj[0]=='-':
+            elif iiu[0]=='-':
                 jj=int(iiu[1])-1
                 # llo.append([[jj],dT])
                 llo.append(jj)
             else:
-                jj=int(cj[0])+6
+                jj=int(iiu[0])+6
                 # llo.append([[jj],dT])
                 llo.append(jj)
         uo.append([llo,dT])
