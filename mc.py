@@ -27,19 +27,6 @@ def tapdog(N):
     print([tx,ty])
     pass
 
-
-
-# P='1155665 4433221 5544332 5544332 1155665 4433221'
-
-# for sd in P:
-#     print(sd)
-#     if sd.isdigit():
-#         tapdog(int(sd)+6)
-#         # pass
-#     # tapdog(int(sd)+6)
-#     time.sleep(0.3)
-#     pass
-
 def tandog(pudog):
     """
     按键与延时
